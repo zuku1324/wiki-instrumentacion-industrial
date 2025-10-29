@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wiki Instrumentación Industrial – Regulación Automática y Aplicaciones</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #f9fafc;
+      color: #262730;
+      margin: 0;
+      padding: 0;
+    }
+    header, nav, main, footer {
+      max-width: 950px;
+      margin: auto;
+      padding: 1em;
+    }
+    header {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+    header h1 {
+      font-size: 2rem;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+    header p {
+      color: #666;
+      margin-top: 0.2rem;
+      font-weight: 500;
+      font-size: 1.05rem;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding-left: 0;
+      list-style: none;
+      margin: 2rem 0 3rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #18367d;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      transition: background-color 0.3s, color 0.3s;
+      cursor: pointer;
+      user-select: none;
+    }
+    nav a:hover, nav a.active {
+      color: #fff;
+      background-color: #374fc5;
+    }
+    main {
+      background: #fff;
+      border-radius: 8px;
+      padding: 2rem 2.5rem 3rem;
+      box-shadow: 0 3px 12px rgb(0 0 0 / 0.08);
+      min-height: 460px;
+      overflow-wrap: break-word;
+    }
+    section {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+    section.active {
+      display: block;
+    }
+    h2 {
+      color: #16305a;
+      margin-top: 0;
+      font-size: 1.9rem;
+      margin-bottom: 1rem;
+    }
+    h3 {
+      color: #294272;
+      margin-top: 2rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+    p {
+      line-height: 1.65;
+      font-size: 1.07rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    ul, ol {
+      margin-left: 28px;
+      margin-bottom: 1rem;
+      color: #444;
+    }
+    ul ul, ol ul {
+      margin-left: 20px;
+    }
+    .media {
+      text-align: center;
+      margin: 2.4rem 0;
+    }
+    .media img, .media iframe {
+      max-width: 92%;
+      border-radius: 8px;
+      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    }
+    .recommend {
+      background: #e9f3fd;
+      border-left: 5px solid #4176d6;
+      padding: 15px 20px;
+      margin: 2rem 0 2.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      color: #2b3a92;
+    }
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 0.94rem;
+      margin: 3rem 0 1.2rem;
+      padding: 0 1rem;
+    }
+    @media (max-width: 700px) {
+      nav ul {
+        flex-direction: column;
+        gap: 8px;
+      }
+      main {
+        padding: 1.8rem 2rem 2.4rem;
+      }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(15px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Wiki Instrumentación Industrial</h1>
+  <p>Regulación Automática y Aplicaciones - Basado en Antonio Creus</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a onclick="showSection('introduccion')" class="active" id="nav-introduccion">Introducción</a></li>
+    <li><a onclick="showSection('regulacion')" id="nav-regulacion">Regulación Automática</a></li>
+    <li><a onclick="showSection('componentes')" id="nav-componentes">Componentes del Control</a></li>
+    <li><a onclick="showSection('tipos')" id="nav-tipos">Tipos de Controladores</a></li>
+    <li><a onclick="showSection('ejemplo')" id="nav-ejemplo">Ejemplo Práctico</a></li>
+    <li><a onclick="showSection('aplicaciones')" id="nav-aplicaciones">Aplicaciones Industriales</a></li>
+    <li><a onclick="showSection('tendencias')" id="nav-tendencias">Tendencias y Retos</a></li>
+    <li><a onclick="showSection('recursos')" id="nav-recursos">Recursos Multimedia</a></li>
+    <li><a onclick="showSection('actividades')" id="nav-actividades">Actividades</a></li>
+    <li><a onclick="showSection('conclusion')" id="nav-conclusion">Conclusiones</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="introduccion" class="active">
+    <h2>Introducción</h2>
+    <p>
+      La instrumentación industrial moderna es la base para el control eficiente, seguro y confiable de procesos en industrias variadas. En esta wiki, basada en los capítulos 9 y 11 del reconocido libro de Antonio Creus, nos sumergiremos en la regulación automática y sus aplicaciones prácticas, que juntos conforman el corazón de los sistemas de control industrial actuales. 
+      Exploraremos fundamentos teóricos, componentes esenciales, los distintos tipos de controladores, ejemplos prácticos, aplicaciones industriales relevantes, avances tecnológicos y además recursos visuales para facilitar la comprensión. 
+    </p>
+    <p>
+      El objetivo es proporcionar un material educativo intensivo, claro y profesional, cargado de información útil para profesionales e investigadores que buscan dominar el control automático y sus aplicaciones sin perder la sencillez y claridad.
+    </p>
+  </section>
+
+  <section id="regulacion">
+  <h2>Regulación Automática</h2>
+  <p>
+    La regulación automática es un proceso fundamental en los sistemas modernos que permite controlar y mantener variables críticas de un proceso industrial dentro de límites preestablecidos. Estas variables pueden incluir temperatura, presión, nivel, flujo, velocidad, composición química y muchas otras, dependiendo del tipo de industria y proceso.
+  </p>
+  <h3>Funcionamiento Básico</h3>
+  <p>
+    En esencia, la regulación automática funciona mediante la medición constante de una variable mediante sensores. La señal obtenida es enviada a un controlador que compara el valor medido con el valor deseado, conocido como <span>setpoint</span>. Si existe alguna desviación o error entre ambos valores, el controlador genera una señal de corrección que se envía a un actuador, el cual modifica el proceso para minimizar dicho error. Este ciclo se realiza de manera continua formando un lazo de control cerrado.
+  </p>
+  <ul>
+    <li><strong>Sistema en lazo cerrado:</strong> Se caracteriza por usar retroalimentación, lo que significa que las correcciones se basan en la diferencia entre el valor real y el valor deseado. Este tipo de sistema tiende a ser más preciso y estable que un lazo abierto.</li>
+    <li><strong>Objetivos del control:</strong> El objetivo principal es minimizar el error, estabilizar la variable controlada, mantener la calidad del producto o proceso, y responder con rapidez y eficacia a cualquier perturbación o cambio en las condiciones externas o internas del sistema.</li>
+    <li><strong>Importancia:</strong> Gracias a la regulación automática, se incrementa la eficiencia energética y operativa, se garantiza la seguridad de los procesos industriales, se reduce la intervención humana directa, con lo que se minimizan errores y riesgos, y se asegura la calidad y uniformidad de los productos.</li>
+  </ul>
+  <h3>Conceptos Matemáticos</h3>
+  <p>
+    Para diseñar y analizar sistemas de regulación automática es crucial el uso de modelos matemáticos que representen el comportamiento dinámico del proceso. Las funciones de transferencia permiten describir cómo la salida del sistema responde a las entradas, considerando retardos y tiempos de respuesta. Se utilizan diagramas de bloques para representar gráficamente la interacción entre componentes del sistema y facilitar el análisis.
+  </p>
+  <p>
+    El análisis de estabilidad, frecuentemente apoyado en ecuaciones diferenciales y transformadas de Laplace, ayuda a garantizar que el sistema no oscile o se vuelva inestable ante perturbaciones. Con estas herramientas matemáticas, se pueden simular y sintonizar controladores antes de su implementación final, aumentando la precisión y seguridad del diseño.
+  </p>
+  <div class="media">
+    <img src="https://controlroomconsoles.com/wp-content/uploads/2024/07/industrial-control-room-monitoring.jpg" alt="Centro de control industrial moderno" />
+  </div>
+</section>
+
+  <section id="componentes">
+  <h2>Componentes del Sistema de Control</h2>
+  <p>Un sistema automático está formado por varios elementos esenciales que trabajan coordinadamente:</p>
+  <ul>
+    <li>
+      <strong>Sensores y transmisores:</strong> Capturan variables físicas o químicas y generan señales para el controlador.
+      <div class="media">
+        <img src="https://srcsl.com/wp-content/uploads/2023/06/PT100_Variadas.jpg" alt="Sensor industrial de temperatura" />
+      </div>
+    </li>
+    <li>
+      <strong>Controlador:</strong> Procesa las señales y determina la acción correctiva.
+      <div class="media">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBscQuBJYxMCWmQcGvt5UYKGQr_X7jkOBnzA&s alt="Panel de controlador industrial" />
+      </div>
+    </li>
+    <li>
+      <strong>Actuadores o elementos finales:</strong> Ejecutan las acciones físicas sobre el proceso, como abrir válvulas o activar motores.
+      <div class="media">
+        <img src="https://cdn.slidesharecdn.com/ss_thumbnails/actuadoreselementosfinales-180715220907-thumbnail.jpg?width=640&height=640&fit=bounds" alt=" actuador industrial" />
+      </div>
+    </li>
+    <li>
+      <strong>Interfaz Hombre-Máquina (HMI) o SCADA:</strong> Permite la supervisión y ajustes manuales por parte del operador.
+      <div class="media">
+        <img src="https://first-automation.com/wp-content/uploads/2024/08/Post-17.png" alt="Sala de control con HMI y SCADA" />
+      </div>
+    </li>
+  </ul>
+</section>
+
+  <section id="tipos">
+    <h2>Tipos y Estrategias de Control</h2>
+    <p>La diversidad de procesos industriales exige diferentes tipos de controladores, que varían en complejidad y aplicación.</p>
+    <ul>
+      <li><strong>Todo-nada (ON/OFF):</strong> Enciende o apaga el actuador según se sobrepase un límite. Simple y económico pero puede generar oscilaciones.</li>
+      <li><strong>Control Proporcional (P):</strong> La acción del controlador es proporcional al error, haciendo el control más suave.</li>
+      <li><strong>Integral (I):</strong> Corrige errores acumulados eliminando el error residual del control proporcional.</li>
+      <li><strong>Derivativo (D):</strong> Responde a la velocidad de cambio del error evitando respuestas lentas y oscilatorias.</li>
+      <li><strong>Control PID:</strong> Es el estándar industrial por su equilibrio entre rapidez, precisión y estabilidad, combinando P, I y D.</li>
+      <li><strong>Control avanzado:</strong> incluye adaptativo, control basado en lógica difusa, predictivo, y tecnología IA para procesos altamente variables o complejos.</li>
+    </ul>
+    <div class="media">
+      <img src="https://www.emb.cl/electroindustria/picarti/201912/articuloveto2.jpg" alt="Ejemplo de sistema PID industrial" />
+    </div>
+  </section>
+
+  <section id="ejemplo">
+    <h2>Ejemplo de Lazo de Control Cerrado</h2>
+    <p>Un típico sistema de control de temperatura mantiene la temperatura de un horno o tanque:</p>
+    <ol>
+      <li>Un sensor mide la temperatura real.</li>
+      <li>El controlador compara esta medida con la temperatura deseada (setpoint).</li>
+      <li>Si la temperatura es menor que la deseada, el controlador activa el calentador.</li>
+      <li>Al alcanzar la temperatura objetivo, el controlador apaga o reduce la potencia del calentador.</li>
+      <li>Este ciclo se repite constantemente para mantener la estabilidad térmica.</li>
+    </ol>
+    <p>Este mecanismo asegura que la temperatura no oscile demasiado y se mantenga dentro de rangos aceptables.</p>
+    <div class="media">
+      <img src="https://instrumentacionycontrol.net/wp-content/uploads/2017/10/2.4.gif" alt="Lazo cerrado temperatura automatizado" />
+    </div>
+  </section>
+
+  <section id="aplicaciones">
+  <h2>Aplicaciones Industriales</h2>
+  <p>Estos sistemas son ampliamente utilizados en diversos sectores para optimizar procesos productivos, garantizar calidad y seguridad:</p>
+  <ul>
+    <li>
+      <strong>Generación eléctrica:</strong> Control de calderas y turbinas para mantener presión, temperatura y caudal adecuados.
+      <div class="media">
+        <img src="https://energyeducation.ca/wiki2develop/images/4/44/BoilingWaterReactor_es.gif" alt="Planta de generación eléctrica" />
+      </div>
+    </li>
+    <li>
+      <strong>Procesos químicos:</strong> Supervisión y control de variables críticas en reactores para asegurar procesos seguros y eficientes.
+      <div class="media">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ6KokIaxHmWISh9PSSfJDegAXP54nXjLORA&s" alt="Laboratorio proceso químico" />
+      </div>
+    </li>
+    <li>
+      <strong>Industria alimentaria y farmacéutica:</strong> Control estricto de parámetros para cumplir con normativas sanitarias y asegurar calidad.
+      <div class="media">
+        <img src="https://img.directindustry.es/images_di/photo-g/77554-13005269.jpg" alt="Línea de producción industria alimentaria" />
+      </div>
+    </li>
+    <li>
+      <strong>Automatización de líneas de producción </strong> Integración de robots, sensores y sistemas de control para optimizar eficiencia.
+      <div class="media">
+        <img src="https://umesal.com/wp-content/uploads/2022/09/Beneficios-de-llevar-a-cabo-una-produccio%CC%81n-automatizada-umesal-blog-sep-01.jpg" alt="Robótica en líneas de producción" />
+      </div>
+    </li>
+    <li>
+      <strong>Control en redes hidráulicas y tratamiento de aguas:</strong> Medición de caudal y presión para asegurar suministro estable y eficiente.
+      <div class="media">
+        <img src="https://valvulas-hidraulicas.mx/wp-content/uploads/2020/03/valvulas.jpg" alt="Válvula en red hidráulica" />
+      </div>
+    </li>
+  </ul>
+</section>
+
+
+  <section id="tendencias">
+    <h2>Tendencias y Retos</h2>
+    <p>Las tecnologías avanzan y nuevas tendencias revolucionan la instrumentación y automatización industrial:</p>
+    <ul>
+      <li><strong>Internet Industrial de las Cosas (IIoT):</strong> Sensores y dispositivos conectados que proveen datos para análisis profundo y acción automática.</li>
+      <li><strong>Gemelos digitales:</strong> Réplicas virtuales de procesos físicos para simulaciones, pruebas y mantenimiento predictivo.</li>
+      <li><strong>Ciberseguridad industrial:</strong>Protección contra amenazas que podrían causar fallos graves o pérdidas confidenciales.</li>
+      <li><strong>Control inteligente:</strong> Uso de IA y aprendizaje automático para adaptarse a cambios y optimizar constantes del proceso.</li>
+    </ul>
+    <div class="recommend">
+      <strong>Consejos para el estudio:</strong> Complementar la teoría con casos reales, análisis de simuladores y mantenerse actualizado en tecnología y normativas.
+    </div>
+  </section>
+
+<section id="recursos">
+  <h2>Recursos Visuales y Multimedia</h2>
+  <div class="media">
+    <iframe width="560" height="315" 
+      src="https://www.youtube.com/embed/Q-iuLa5BgqM" 
+      title="Video introductorio" frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+    <p>Video introductorio: La automatización de los procesos industriales (YouTube)</p>
+  </div>
+  <div class="media">
+    <iframe width="560" height="315" 
+      src="https://www.youtube.com/embed/IEaKPHZP1NE" 
+      title="Video proyecto banda llenadora" frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+    <p>Video: proyecto Banda llenadora de recipientes</p>
+  </div>
+  <div class="media">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/YeQHNwiwFD0?si=trFozCBfsauYhm8f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <p>Video: Automatización - Manipulador Avanzado con PLC y Cinta Transportadora (Grupo Sertec)</p>
+  </div>
+</section>
+
+
+
+
+  <section id="actividades">
+    <h2>Actividades y Ejercicios</h2>
+    <ul>
+      <li>Construir un diagrama detallado de un lazo de control para caldera y describir su operación.</li>
+      <li>Examinar un sistema SCADA actual y sus funciones, preparando un reporte técnico.</li>
+      <li>Comparar diferentes estrategias de control y discutir ventajas y limitaciones en escenarios reales.</li>
+      <li>Investigar y presentar un caso de aplicación de gemelos digitales o mantenimiento predictivo.</li>
+    </ul>
+  </section>
+
+  <section id="conclusion">
+    <h2>Conclusiones</h2>
+    <p>La instrumentación industrial y la regulación automática constituyen el pilar fundamental que sostiene la modernización y la eficiencia en los procesos productivos de múltiples sectores industriales a nivel global. El dominio profundo de estas disciplinas no solo permite garantizar la seguridad y optimizar la calidad de los productos, sino que también impulsa una gestión inteligente de los recursos energéticos y materiales, contribuyendo significativamente a la sostenibilidad ambiental.
+
+A medida que las tecnologías evolucionan, integrando inteligencia artificial, Internet de las Cosas industrial y gemelos digitales, la instrumentación se posiciona como un campo dinámico y en constante innovación, crucial para afrontar los retos del futuro industrial y digital. Esta wiki ha buscado entregar un compendio coherente y accesible de los aspectos teóricos y prácticos esenciales para comprender y aplicar estos conocimientos.
+
+En conclusión, adquirir y actualizar habilidades en regulación automática y sistemas instrumentados es vital para los profesionales que desean liderar y transformar los procesos industriales con soluciones inteligentes, eficientes y seguras, asegurando así la competitividad y sostenibilidad de las industrias en la era digital.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Wiki creada por Javier Sierra y Juan felipe rhenals | Basada en Instrumentación Industrial de Antonio Creus · 2025</p>
+</footer>
+
+<script>
+  const navLinks = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('main section');
+
+  function showSection(id) {
+    sections.forEach(sec => {
+      sec.classList.toggle('active', sec.id === id);
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('onclick').includes(id));
+    });
+  }
+</script>
+
+<script>
+  // Botón para volver arriba
+  const btnUp = document.createElement('button');
+  btnUp.textContent = '↑';
+  btnUp.title = 'Volver arriba';
+  Object.assign(btnUp.style, {
+    display: 'none',
+    position: 'fixed',
+    bottom: '40px',
+    right: '30px',
+    zIndex: 1000,
+    padding: '10px 14px',
+    fontSize: '16px',
+    border: 'none',
+    borderRadius: '50%',
+    backgroundColor: '#374fc5',
+    color: 'white',
+    cursor: 'pointer',
+    boxShadow: '0 2px 6px rgba(0,0,0,0.3)'
+  });
+  document.body.appendChild(btnUp);
+  btnUp.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) btnUp.style.display = 'block';
+    else btnUp.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
